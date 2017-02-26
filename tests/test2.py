@@ -61,3 +61,11 @@ def read_uri(fname):
     else:
         # use open(uri)
     return ...
+
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--input', help='input help')
+args = parser.parse_args()
+
+filename = args.input
