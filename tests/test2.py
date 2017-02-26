@@ -10,7 +10,12 @@
 #  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
 #  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]]
 
-#indexing 2d lists
-N =122
-a2d = [ list(range(i*N, i*N + N)) for i in range(N) ]
-print(a2d)
+# #indexing 2d lists
+# N =122
+# a2d = [ list(range(i*N, i*N + N)) for i in range(N) ]
+# print(a2d)
+
+#slicing 
+N = 999
+a = list(range(N))
+print(a[99:105])
