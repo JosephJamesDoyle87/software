@@ -1,6 +1,6 @@
 # import pprint
 # 
-a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+# a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 # print (a)
 
 # a2d = [a, a, a, a]
@@ -16,10 +16,15 @@ a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 # print(a2d)
 # 
 # slicing 
-# N = 999
+N = 999
 # a = list(range(N))
 # print(a[99:105])
 
 #slicing 2
 
-print(a[2:5])
+# print(a[2:5])
+
+# Iteration on lists - using index and element access
+a = list(range(N))
+for i in range(len(a)):
+    print(i, a[i])
