@@ -54,3 +54,10 @@ uri = "http://claritytrec.ucd.ie/~alawlor/comp30670/input_assign3.txt"
 req = urllib.request.urlopen(uri)
 
 buffer = req.read().decode('utf-8')
+
+def read_uri(fname):
+    if fname.startswith('http'):
+        # use urllib.request.urlopen(uri)
+    else:
+        # use open(uri)
+    return ...
