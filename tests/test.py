@@ -3,10 +3,10 @@ w ,h = 999,999;
 Matrix = [[0 for x in range(w)] for y in range (h)]
 
 
-def turn-on:
+def turnon:
     
 for x in range[0,0] to [999]:
-    true
+    r true
     
 
 
