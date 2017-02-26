@@ -16,7 +16,7 @@
 # print(a2d)
 # 
 # slicing 
-N = 999
+# N = 999
 # a = list(range(N))
 # print(a[99:105])
 
@@ -24,7 +24,14 @@ N = 999
 
 # print(a[2:5])
 
-# Iteration on lists - using index and element access
-a = list(range(N))
-for i in range(len(a)):
-    print(i, a[i])
+# # Iteration on lists - using index and element access
+# a = list(range(N))
+# for i in range(len(a)):
+#     print(i, a[i])
+
+# use readlines to read a line a time
+filename = "data/data.txt"
+with open(filename) as f:
+    for line in f.readlines():
+        # process line        
+        values = line.strip().split()
