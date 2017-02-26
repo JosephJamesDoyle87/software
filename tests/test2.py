@@ -47,3 +47,10 @@ help(urllib.request.urlopen)
 Help on function urlopen in module urllib.request:
 
 urlopen(url, data=None, timeout=<object object at 0x10185f2c0>, *, cafile=None, capath=None, cadefault=False, context=None)
+
+# request
+
+uri = "http://claritytrec.ucd.ie/~alawlor/comp30670/input_assign3.txt"
+req = urllib.request.urlopen(uri)
+
+buffer = req.read().decode('utf-8')
