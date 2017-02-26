@@ -41,3 +41,9 @@ buffer = open(filename).read()
 
 for line in buffer.split('\n'):
     # process line
+
+import urllib.request
+help(urllib.request.urlopen)
+Help on function urlopen in module urllib.request:
+
+urlopen(url, data=None, timeout=<object object at 0x10185f2c0>, *, cafile=None, capath=None, cadefault=False, context=None)
