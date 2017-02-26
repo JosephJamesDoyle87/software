@@ -35,3 +35,9 @@ with open(filename) as f:
     for line in f.readlines():
         # process line        
         values = line.strip().split()
+
+# read the whole file into a buffer
+buffer = open(filename).read()
+
+for line in buffer.split('\n'):
+    # process line
