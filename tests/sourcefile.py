@@ -74,3 +74,103 @@ class Lights(object):
 
         mask = self.lights < LightState.OFF
         self.lights[mask] = LightState.OFF
+        
+def parse_and_update(lights, string):
+   
+    positions = try_parse_turn_on(string)
+    if positions:
+        lights.turn_on(*positions)
+        return
+
+    positions = try_parse_turn_off(string)
+    if positions:
+        lights.turn_off(*positions)
+        return
+
+    positions = try_parse_toggle(string)
+    if positions:
+        lights.toggle(*positions)
+        return
+
+    raise ValueError("Unrecognized command")
+
+def try_parse_positions(string):
+    """This function tries to parse the range or return None"""
+    
+    match = re.match(r'(\d+),(\d+) through (\d+),(\d+)', string)
+    if not match:
+        return None
+
+    (top, left, bottom, right) = map(int, match.groups())
+
+    return (top, left, bottom, right)
+
+def try_parse_turn_on(string):
+    """This function tries to parse the turn on command or return None
+    >>> try_parse_turn_on("turn on 0,0 through 999,999")
+    (0, 0, 999, 999)
+    >>> try_parse_turn_on("turn off 0,0 through 999,999") is None
+    True
+    >>> try_parse_turn_on("turn on 0,0 through 999,") is None
+    True
+    """
+    turn_on = re.match(r'turn on ', string)
+    if not turn_on:
+        return None
+
+    positions = try_parse_positions(string[turn_on.end():])
+
+    return positions
+
+def try_parse_turn_off(string):
+    """This function tries to parse the turn off command or return None
+    >>> try_parse_turn_off("turn off 0,0 through 999,999")
+    (0, 0, 999, 999)
+    >>> try_parse_turn_off("turn on 0,0 through 999,999") is None
+    True
+    >>> try_parse_turn_off("turn off 0,0 through 999,") is None
+    True
+    """
+    turn_off = re.match(r'turn off ', string)
+    if not turn_off:
+        return None
+
+    positions = try_parse_positions(string[turn_off.end():])
+
+    return positions
+
+def try_parse_toggle(string):
+    """This Tfunction tries to parse the toggle command or return None
+    >>> try_parse_toggle("toggle 0,0 through 999,999")
+    (0, 0, 999, 999)
+    >>> try_parse_toggle("turn off 0,0 through 999,999") is None
+    True
+    >>> try_parse_toggle("toggle 0,0 through 999,") is None
+    True
+    """
+    toggle = re.match(r'toggle ', string)
+    if not toggle:
+        return None
+
+    positions = try_parse_positions(string[toggle.end():])
+
+    return positions
+
+def main(filename):
+    """Read instructions for lights and count lit ones"""
+    lights = Lights(1000)
+    with open(filename, 'r') as f:
+        for line in f:
+            parse_and_update(lights, line)
+
+    count = lights.count_lit()
+    print(count)
+
+if __name__ == "__main__":
+    import argparse
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('filename')
+    args = parser.parse_args()
+
+    main(**vars(args))
