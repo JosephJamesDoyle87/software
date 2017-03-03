@@ -11,7 +11,7 @@ inclusive ranges given as coordinate pairs.
 
 -Coordinate pairs represent opposite corners of a rectangle, inclusive; 
 
--Lights start all turned On.
+-Lights start all turned On..
 """
 
 import enum
